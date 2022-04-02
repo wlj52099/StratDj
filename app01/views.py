@@ -1,3 +1,4 @@
+import requests
 from django.shortcuts import render, HttpResponse, redirect
 from app01.models import user
 from app01 import models
@@ -93,5 +94,12 @@ def user(request):
 
 
 def user_add(request):
-    form = MyForm()
-    return render(request, 'user_add.html', {'from': form})
+    if request.method == 'GET':
+        form = MyForm()
+        return render(request, 'user_add.html', {'from': form})
+    form = MyForm(data=request.POST)
+    if form.is_valid():
+        form.save()
+        return redirect('/user')
+    else:
+        print(form.errors)
