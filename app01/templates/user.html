@@ -1,0 +1,42 @@
+{% extends 'laout.html' %}
+{% block container %}
+    <div style="margin-bottom: 10px"><a class="btn btn-success" href="/department/add">新建部门</a></div>
+    <div class="page-header">部门列表</div>
+    <div class="panel panel-default">
+        <div class="bs-example" data-example-id="bordered-table">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>姓名</th>
+                    <th>密码</th>
+                    <th>年龄</th>
+                    <th>余额</th>
+                    <th>时间</th>
+                    <th>性别</th>
+                    <th>部门</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for obj in data %}
+                    <tr>
+
+                        <th>{{ obj.id }}</th>
+                        <td>{{ obj.name }}</td>
+                        <td>{{ obj.password }}</td>
+                        <td>{{ obj.age }}</td>
+                        <td>{{ obj.account }}</td>
+                        <td>{{ obj.creat_time|date:'Y-m-d H:i:s' }}</td>
+                        <td>{{ obj.get_gender_display }}</td>
+                        <td>{{ obj.depart.name }}</td>
+                        <td>
+                            <a class="btn btn-primary btn-xs" href="/department/{{ obj.id }}/edit">编辑</a>
+                            <a class="btn btn-danger btn-xs" href="/department/delete?nid={{ obj.id }}">删除</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

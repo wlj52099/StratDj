@@ -8,6 +8,8 @@ class user(models.Model):
 class department(models.Model):
     id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=64)
+    def __str__(self):
+        return self.name
 class userInfo(models.Model):
     name = models.CharField(verbose_name="姓名",max_length=16)
     password = models.CharField(verbose_name="密码",max_length=64)

@@ -1,0 +1,18 @@
+{% extends 'laout.html' %}
+{% block container %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">新增部门</h3>
+        </div>
+        <div class="panel-body">
+            {% csrf_token %}
+            {% for f in from %}
+                <div class="form-group">
+                <label for="exampleInputName2">{{ f.label }}:</label>
+                {{ f }}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+

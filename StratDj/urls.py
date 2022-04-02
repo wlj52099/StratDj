@@ -29,5 +29,9 @@ urlpatterns = [
     path('department/delete',views.department_delete),
     #修改部门
     path('department/<int:nid>/edit',views.department_edit),
+    #人员列表
+    path('user/',views.user),
+    #添加人员
+    path('user/add',views.user_add)
 
 ]
